@@ -1,0 +1,9 @@
+{
+  "name": "artifacts-shared",
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "prompt-sync": "^4.2.0"
+  }
+}

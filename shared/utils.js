@@ -7,32 +7,46 @@ export function ask(question) {
 }
 
 export const locations = {
+  // crafting locations
   crafting: [
     {
-      name: "Workshop1",
-      skill: "Weaponcrafting",
+      name: "Weaponcrafting",
+      code: "weaponcrafting",
       pos: {
         x: 2,
         y: 1,
       },
     },
     {
-      name: "Workshop2",
-      skill: "Gearcrafting",
+      name: "Gearcrafting",
+      code: "gearcrafting",
       pos: {
         x: 3,
         y: 1,
       },
-    }
+    },
   ],
+  // gathering locations
+  gathering: [
+    {
+      name: "Copper Rocks",
+      code: "copper_rocks",
+      pos: {
+        x: 2,
+        y: 0,
+      },
+    },
+  ],
+  // combat locations
   fighting: [
     {
-      name: "Chickens",
+      name: "Chicken",
+      code: "chicken",
       level: 1,
       pos: {
         x: 0,
         y: 1,
       },
-    }
-  ]
+    },
+  ],
 };

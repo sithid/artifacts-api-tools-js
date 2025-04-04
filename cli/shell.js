@@ -64,6 +64,7 @@ export class Shell {
   getLocationsMenu( type ) {
     let craft = locations.crafting;
     let fight = locations.fighting;
+    let gather = locations.gathering;
     
     if (type === 'crafting') {
       console.log("Crafting Locations: ");
@@ -71,8 +72,16 @@ export class Shell {
         let loc = craft[index];
         console.log(
           `    Name: ${loc.name}\n` +
-          `   Skill: ${loc.skill}\n` +
           `     Pos: X = ${loc.pos.x} Y = ${loc.pos.y}\n\r`
+        );
+      }
+    } else if (type === 'gathering') {
+      console.log("Gathering Locations: ");
+      for (let index = 0; index < gather.length; index++) {
+        let loc = gather[index];
+        console.log(
+          `    Name: ${loc.name}\n` +
+            `     Pos: X = ${loc.pos.x} Y = ${loc.pos.y}\n\r`
         );
       }
     } else if (type === 'fighting') {
@@ -86,7 +95,7 @@ export class Shell {
         );
       }
     } else {
-      console.log("Location Options:\n\tCrafting\n\tFighting\n");
+      console.log("Location Options:\n\tCrafting\n\tGathering\n\tFighting\n");
     }
   }
 }

@@ -1,19 +1,6 @@
 <template>
   <div class="home">
-    <Counter />
-    <div class="buttons">
-      <button @click="storeCounter.decreaseCount">-</button>
-      <button @click="storeCounter.increaseCount">+</button>
-    </div>
-    <hr>
-    <div>
-      The count is: {{ storeCounter.isEven }}
-    </div>
-    <hr>
-    <input
-      type="number"
-      v-model="storeCounter.count"
-    />
+    <h1>Home Page</h1>
   </div>
 </template>
 
@@ -25,14 +12,16 @@ import Counter from '@/components/Counter.vue';
 const storeCounter = useCounterStore();
 </script>
 
-<style>
-.count {
-  font-size: 60px;
-  margin: 20px;
+<style scoped>
+.home {
+  background-color: rgb(255, 153, 0);
+  color: black;
+  border: 2px solid black;
+  margin-top: 10px;
+  height: 100vh;
 }
 
-.buttons button{
-  font-size: 40px;
-  margin: 10px;
+h1 {
+  text-align: center;
 }
 </style>

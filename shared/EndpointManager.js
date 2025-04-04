@@ -232,8 +232,6 @@ export class EndpointManager {
               console.log("Error Unknown: " + response.status);
               break;
           }
-
-          return null;
         }
         else
         {

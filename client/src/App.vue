@@ -4,42 +4,52 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-    <h1>ArtifactsUI</h1>
-    <div class="container">
-      <nav class="nav-menu">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/test">Test</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-  <RouterView />
+  <body>
+    <header>
+      <div class="container">
+        <h1>ArtifactsUI</h1>
+        <nav class="nav-menu">
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/characters">Characters</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+      </div>
+    </header>
+    <RouterView />
+  </body>
 </template>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
 header {
   display: flex;
   justify-content: left;
-  border: 2px solid black;
-  background-color: rgb(255, 153, 0);
-  color: black;
+  background-color: var( --color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-text-primary);
+  margin-bottom: 10px;
 }
 
 h1 {
-  border-right: 2px solid black;
+  display: inline-block;
+  border-right: 2px solid var(--color-text-primary);
+  min-width: 200px;
+  max-width: 300px;
   margin: 0;
   padding: 10px;
 }
 
 .nav-menu {
-  display: flex;
-  font-size: 24px;
+  display: inline-block;
+  font-size: 1.5rem;
 }
 
 .nav-menu a {
-  color: black;
+  color: var(--color-text-primary);
   margin: 15px 5vw;
   text-decoration: none;
 }

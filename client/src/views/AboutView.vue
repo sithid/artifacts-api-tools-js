@@ -5,15 +5,15 @@
 </template>
 
 <style scoped>
-.about {
-  background-color: rgb(255, 153, 0);
-  color: black;
-  border: 2px solid black;
-  margin-top: 10px;
-  height: 100vh;
+*{
+  box-sizing: border-box;
 }
 
-h1 {
-  text-align: center;
+.about {
+  background-color: var( --color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);;
+  margin-top: 10px;
+  height: 100vh;
 }
 </style>

@@ -4,24 +4,20 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import { useCounterStore } from '@/stores/counter';
-import Counter from '@/components/Counter.vue';
+<script>
 
-const storeCounter = useCounterStore();
 </script>
 
 <style scoped>
-.home {
-  background-color: rgb(255, 153, 0);
-  color: black;
-  border: 2px solid black;
-  margin-top: 10px;
-  height: 100vh;
+*{
+  box-sizing: border-box;
 }
 
-h1 {
-  text-align: center;
+.home {
+  background-color: var( --color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  margin-top: 10px;
+  height: 100vh;
 }
 </style>

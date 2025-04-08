@@ -1,0 +1,21 @@
+:root {
+  --color-bg-primary: rgb(250, 15, 55);
+  --color-bg-secondary: rgb(14, 77, 212);
+  --color-bg-tertiary: rgb(240, 147, 7);
+  --color-text-primary: rgb(0,0,0);
+  --color-text-secondary: rgb(255,255,255);
+  --color-text-tertiary: rgb(255, 230, 2);
+}
+
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-primary);
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+}

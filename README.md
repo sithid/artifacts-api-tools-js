@@ -21,6 +21,9 @@ Execute `npm run dev` inside `./client` or `node main.js` inside `./cli`.
 
 You will notice that `secrets.js` is missing.  You will need to create your own ( touch secrets.js ) and add your own api key:
 
-```
+```javascript
 export const API_TOKEN = "ARTIFACTS_API_TOKEN_GOES_HERE"
 ```
+
+I strongly suggest that you add your own `secrets.js` to `.gitignore` if you plan to commit to github.  
+Never commit sensitive information like api keys.

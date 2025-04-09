@@ -10,7 +10,7 @@
 }
 
 .about {
-  background-color: var( --color-bg-secondary);
+  background-color: var( --color-bg-primary);
   color: var(--color-text-primary);
   border: 1px solid var(--color-text-primary);;
   margin-top: 10px;

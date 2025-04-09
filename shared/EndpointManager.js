@@ -30,6 +30,48 @@ export class EndpointManager {
     }
   }
 
+  async getMaps() {
+    const url = `${this.server}/maps`;
+
+    const options = {
+      method: "GET",
+      headers: this.requestHeader,
+    };
+
+    const response = await fetch(url, options);
+
+    if (response.status !== 200) {
+      console.log(`Something went wrong:  + ${response.status}`);
+
+      return null;
+    } else {
+      let { data } = await response.json();
+      return data;
+    }
+  }
+
+  async getMap(character) {
+    const x = character?.x ?? 0;
+    const y = character?.y ?? 0;
+
+    const url = `${this.server}/maps/${x}/${y}`;
+
+    const options = {
+      method: "GET",
+      headers: this.requestHeader,
+    };
+
+    const response = await fetch(url, options);
+
+    if (response.status !== 200) {
+      console.log(`Something went wrong: ${response.status}`);
+      return null;
+    } else {
+      let { data } = await response.json();
+      return data;
+    }
+  }
+
   async moveCharacter(character, x, y) {
     const url = `${this.server}/my/${character}/action/move`;
 
@@ -156,7 +198,7 @@ export class EndpointManager {
       headers: this.requestHeader,
     };
 
-    if (character !== 'all') {
+    if (character !== "all") {
       const response = await fetch(url, options);
 
       if (response.status !== 200) {
@@ -185,29 +227,23 @@ export class EndpointManager {
         }
 
         return null;
-      }
-      else {
+      } else {
         let { data } = await response.json();
         console.log("The resource has been successfully gathered. ");
 
         return data;
       }
-    }
-    else
-    {
+    } else {
       let chars = await this.getCharacterData();
       const charDatas = [];
-      
-      for (let char of chars)
-      {
+
+      for (let char of chars) {
         let url = `${this.server}/my/${char.name}/action/gathering`;
 
         const response = await fetch(url, options);
 
-        if (response.status !== 200)
-        {
-          switch (response.status)
-          {
+        if (response.status !== 200) {
+          switch (response.status) {
             case 598:
               console.log("Resource not found on this map.");
               break;
@@ -232,15 +268,13 @@ export class EndpointManager {
               console.log("Error Unknown: " + response.status);
               break;
           }
-        }
-        else
-        {
+        } else {
           let { data } = await response.json();
           console.log("The resource has been successfully gathered. ");
           charDatas.push(data);
         }
       }
-      
+
       return charDatas;
     }
   }

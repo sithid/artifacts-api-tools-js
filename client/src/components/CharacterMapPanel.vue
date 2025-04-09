@@ -2,65 +2,71 @@
   <div class="details">
     <h3>{{ formattedMapCode }} {{ formattedMapType }}</h3>
     <img id="mapImage" :src="formattedMapSrc" />
-    <h3> ( {{ this.map.x }} , {{ this.map.y }} ) </h3>
+    <h3>{{ formattedMapCords }}</h3>
   </div>
 </template>
 
 <script>
-
 export default {
   props: {
-    character : {
+    character: {
       type: Object,
       default() {
         return {
-          name: 'Empty',
-          skin: 'men1',
+          name: "Empty",
+          skin: "men1",
           x: 0,
-          y: 0
+          y: 0,
         };
-      }
+      },
     },
-    map : {
+    map: {
       type: Object,
       default() {
         return {
-          name: 'empty',
-          skin: 'empty',
+          name: "empty",
+          skin: "empty",
           x: 0,
           y: 0,
           content: {
-            code: 'empty',
-            type: 'empty'
-          }
+            code: "empty",
+            type: "empty",
+          },
         };
-      }
-    }
+      },
+    },
   },
   computed: {
     formattedMapSrc() {
       if (!this.map?.skin) {
-        return '';
+        return "";
       }
 
       return `https://www.artifactsmmo.com/images/maps/${this.map.skin}.png`;
     },
     formattedMapCode() {
-      if (!this.map?.content?.code) {
-        return '';
-      }
-
-      return this.map.content.code.charAt(0).toUpperCase() + this.map.content.code.slice(1);
+      if (!this.map?.content?.code) return "";
+      return (
+        this.map.content.code.charAt(0).toUpperCase() +
+        this.map.content.code.slice(1)
+      );
     },
     formattedMapType() {
-      if (!this.map?.content?.type) {
-        return '';
+      if (!this.map?.content?.type) return "";
+      return (
+        this.map.content.type.charAt(0).toUpperCase() +
+        this.map.content.type.slice(1)
+      );
+    },
+    formattedMapCords() {
+      if (this.map.x === undefined || this.map.y === undefined) {
+        return "";
       }
 
-      return this.map.content.type.charAt(0).toUpperCase() + this.map.content.type.slice(1);
-    }
-  }
-}
+      return `( ${this.map.x} , ${this.map.y} )`;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -81,4 +87,4 @@ export default {
 #mapImage {
   margin: 0px;
 }
-</style> 
+</style>

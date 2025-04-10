@@ -14,6 +14,9 @@ Various tools, utilities, & frontends, etc for the ArtifactsMMO API.
 - CLI: Command line interface to play the game.
 - GUI: VueJS frontend client to play the game.
 
+## Vue Frontend Progress
+![ArtifactUI](./images/progress.png)
+
 ## Running
 
 Clone the repo and execute `npm install` inside `./client`,`./cli`, and `./shared`.  

@@ -26,6 +26,7 @@ import { RouterLink, RouterView } from 'vue-router'
 * {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
+  margin: 0;
 }
 
 header {

@@ -70,10 +70,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-
 .details {
   border: 2px solid var(--color-text-primary);
   background-color: var(--color-bg-tertiary);
@@ -85,6 +81,6 @@ export default {
 }
 
 #mapImage {
-  margin: 0px;
+  margin: 0;
 }
 </style>

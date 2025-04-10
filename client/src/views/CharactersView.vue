@@ -21,6 +21,12 @@
           Loading character data...
         </div>
       </div>
+      <div>
+        <character-skill-panel
+          v-if="characters[activeCharacter]"
+          :character="characters[activeCharacter]"
+        ></character-skill-panel>
+      </div>
     </div>
   </div>
 </template>
@@ -29,11 +35,13 @@
 import { EndpointManager } from '../../../shared/EndpointManager.js';
 import CharacterImgPanel from '@/components/CharacterImgPanel.vue';
 import CharacterMapPanel from '@/components/CharacterMapPanel.vue';
+import CharacterSkillPanel from '@/components/CharacterSkillPanel.vue';
 
 export default {
   components: {
     CharacterImgPanel,
-    CharacterMapPanel
+    CharacterMapPanel,
+    CharacterSkillPanel
   },
   created() {
     this.getCharacters();
@@ -104,7 +112,6 @@ export default {
   flex-direction: row;
   background-color: var( --color-bg-primary);
   color: var(--color-text-primary);
-  width: 100%;
 }
 
 ul {

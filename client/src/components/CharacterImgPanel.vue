@@ -37,10 +37,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-
 .character {
   text-align: center;
   font-size: 1rem;

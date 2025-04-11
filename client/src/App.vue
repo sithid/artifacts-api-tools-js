@@ -30,32 +30,41 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 
 header {
-  display: flex;
-  justify-content: left;
-  background-color: var( --color-bg-secondary);
+  background-color: var(--color-bg-secondary);
   color: var(--color-text-primary);
   border: 2px solid var(--color-text-primary);
   margin-bottom: 10px;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+}
+
 h1 {
   display: inline-block;
-  border-right: 2px solid var(--color-text-primary);
+  border: 2px solid var(--color-text-primary);
+  background-color: var( --color-bg-tertiary);
+  border-radius: 5px;
   min-width: 200px;
   max-width: 300px;
-  margin: 0;
-  padding: 10px;
+  margin-left: 10px;
 }
 
 .nav-menu {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   font-size: 1.5rem;
+  align-items: center;
 }
 
 .nav-menu a {
   color: var(--color-text-primary);
   margin: 15px 5vw;
   text-decoration: none;
+  border: 2px solid var(--color-text-primary);
+  border-radius: 15px;
+  background-color: var(--color-bg-tertiary);
+  padding: 2px;
 }
-
 </style>

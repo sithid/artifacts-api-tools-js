@@ -96,7 +96,7 @@ export default {
 }
 
 .progress-bar.hp .progress-fill {
-  background-color: var( --color-bg-secondary);
+  background-color: green;
 }
 
 .progress-text {

@@ -1,6 +1,6 @@
 <template>
   <div class="character-stats-container">
-    <h3 class="character-name">{{ character.name }}</h3>
+    <h3 class="character-name">{{ character.name }}, Level {{ character.level }}</h3>
     <character-progress-bar
       label="XP"
       :current="character.xp"
@@ -49,6 +49,7 @@ export default {
   flex-direction: column;
   background-color: var(--color-bg-tertiary);
   border: 2px solid var(--color-text-primary);
+  border-radius: 15px;
   width: 300px;
   height: 280px;
   margin-left: 10px;

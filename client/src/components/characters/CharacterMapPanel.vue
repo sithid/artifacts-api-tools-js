@@ -72,6 +72,7 @@ export default {
 <style scoped>
 .details {
   border: 2px solid var(--color-text-primary);
+  border-radius: 15px;
   background-color: var(--color-bg-tertiary);
   color: var(--color-text-primary);
   text-align: center;

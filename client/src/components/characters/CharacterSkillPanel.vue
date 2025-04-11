@@ -86,6 +86,7 @@ export default {
   flex-direction: column;
   background-color: var(--color-bg-tertiary);
   border: 2px solid var(--color-text-primary);
+  border-radius: 15px;
   width: 600px;
   height: 280px;
   margin-left: 10px;

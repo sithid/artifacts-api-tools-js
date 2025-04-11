@@ -11,21 +11,31 @@
           ></character-img-panel>
         </li>
       </ul>
-      <div>
-        <character-map-panel 
-          v-if="activeCharacterMap && characters[activeCharacter]"
-          :character="characters[activeCharacter]"
-          :map="activeCharacterMap"
-        ></character-map-panel>
-        <div v-else class="loading">
-          Loading character data...
+      <div class="right-panels">
+        <div class="top-panels">
+          <div class="map-panel">
+            <character-map-panel 
+              v-if="activeCharacterMap && characters[activeCharacter]"
+              :character="characters[activeCharacter]"
+              :map="activeCharacterMap"
+            ></character-map-panel>
+            <div v-else class="loading">
+              Loading character data...
+            </div>
+          </div>
+          <div class="stats-panel">
+            <character-stat-panel
+              v-if="characters[activeCharacter]"
+              :character="characters[activeCharacter]"
+            ></character-stat-panel>
+          </div>
+        <div class="skills-panel">
+          <character-skill-panel
+            v-if="characters[activeCharacter]"
+            :character="characters[activeCharacter]"
+          ></character-skill-panel>
         </div>
-      </div>
-      <div>
-        <character-skill-panel
-          v-if="characters[activeCharacter]"
-          :character="characters[activeCharacter]"
-        ></character-skill-panel>
+        </div>
       </div>
     </div>
   </div>
@@ -33,15 +43,17 @@
 
 <script>
 import { EndpointManager } from '../../../shared/EndpointManager.js';
-import CharacterImgPanel from '@/components/CharacterImgPanel.vue';
-import CharacterMapPanel from '@/components/CharacterMapPanel.vue';
-import CharacterSkillPanel from '@/components/CharacterSkillPanel.vue';
+import CharacterImgPanel from '@/components/characters/CharacterImgPanel.vue';
+import CharacterMapPanel from '@/components/characters/CharacterMapPanel.vue';
+import CharacterStatPanel from '@/components/characters/CharacterStatPanel.vue';
+import CharacterSkillPanel from '@/components/characters/CharacterSkillPanel.vue';
 
 export default {
   components: {
     CharacterImgPanel,
     CharacterMapPanel,
-    CharacterSkillPanel
+    CharacterSkillPanel,
+    CharacterStatPanel
   },
   created() {
     this.getCharacters();
@@ -112,6 +124,18 @@ export default {
   flex-direction: row;
   background-color: var( --color-bg-primary);
   color: var(--color-text-primary);
+}
+
+.right-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top-panels {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 ul {

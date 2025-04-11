@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import SkillProgressIndicator from '@/components/SkillProgressIndicator.vue';
+import SkillProgressIndicator from '@/components/characters/SkillProgressIndicator.vue';
 
 export default {
   components: {
@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 * {
   box-sizing: border-box;
 }

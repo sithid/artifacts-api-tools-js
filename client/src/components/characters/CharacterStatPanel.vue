@@ -13,15 +13,22 @@
       :max="character.max_hp"
       type="hp"
     ></character-progress-bar>
+    <div class="dmg-res-container">
+      <damage-stat-panel 
+        :character="character"
+      ></damage-stat-panel>
+    </div>
   </div>
 </template>
 
 <script>
 import CharacterProgressBar from '@/components/characters/CharacterProgressBar.vue';
+import DamageStatPanel from '../effects/DamageStatPanel.vue';
 
 export default {
   components: {
-    CharacterProgressBar
+    CharacterProgressBar,
+    DamageStatPanel
   },
   props: {
     character: {
@@ -59,5 +66,9 @@ export default {
 .character-name {
   color: var(--color-text-primary);
   font-size: 1.2rem;
+}
+
+.dmg-res-container {
+
 }
 </style>

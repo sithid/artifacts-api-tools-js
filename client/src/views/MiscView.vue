@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>About</h1>
+  <div class="misc">
+    <h1>Misc</h1>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.about {
+.misc {
   background-color: var( --color-bg-primary);
   color: var(--color-text-primary);
   margin-top: 10px;

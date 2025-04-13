@@ -2,16 +2,16 @@
   <div class="character-stats-container">
     <h3 class="character-name">{{ character.name }}, Level {{ character.level }}</h3>
     <character-progress-bar
-      label="XP"
-      :current="character.xp"
-      :max="character.max_xp"
-      type="xp"
-    ></character-progress-bar>
-    <character-progress-bar
       label="HP"
       :current="character.hp"
       :max="character.max_hp"
       type="hp"
+    ></character-progress-bar>
+    <character-progress-bar
+      label="XP"
+      :current="character.xp"
+      :max="character.max_xp"
+      type="xp"
     ></character-progress-bar>
     <div class="dmg-res-container">
       <damage-stat-panel 
@@ -81,9 +81,5 @@ export default {
 .character-name {
   color: var(--color-text-primary);
   font-size: 1.2rem;
-}
-
-.dmg-res-container {
-  
 }
 </style>

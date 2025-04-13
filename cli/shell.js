@@ -37,6 +37,9 @@ export class Shell {
           case "rest":
             await this.manager.restCharacter(cmdArgs[1]);
             break;
+          case "map":
+            await this.manager.getMap(cmdArgs[1]);
+            break;
           case "locations":
             this.getLocationsMenu(cmdArgs[1]);
             break;
@@ -57,7 +60,8 @@ export class Shell {
     console.log("\tFight: fight <character>, fight with character at their current location");
     console.log("\tGather: gather <character,all>, gather with character(s) at their current location");
     console.log("\tRest: rest <character>, rest character");
-    console.log("\tLocations: locations, displays a list of locations")
+    console.log("\tMap: map <character, all> get map data for character");
+    console.log("\tLocations: locations, displays a list of locations");
     console.log("");
   }
 

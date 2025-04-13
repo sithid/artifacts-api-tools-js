@@ -79,6 +79,7 @@ export default {
   watch: {
     activeCharacter: {
       async handler(newIndex) {
+        await this.getCharacters();
         if (this.characters && this.characters[newIndex]) {
           const character = this.characters[newIndex];
           if (character && typeof character.x === 'number' && typeof character.y === 'number') {

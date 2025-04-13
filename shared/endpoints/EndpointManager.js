@@ -2,12 +2,16 @@ import { API_TOKEN, API_CHARS } from "../../secrets.js";
 
 export class EndpointManager {
   constructor() {
+    this.characters = [];
     this.server = "https://api.artifactsmmo.com";
     this.token = API_TOKEN;
     this.requestHeader = new Headers();
     this.requestHeader.append("Accept", "application/json");
     this.requestHeader.append("Content-Type", "application/json");
     this.requestHeader.append("Authorization", "Bearer " + this.token);
+    this.getCharacterData().then((data) => {
+      this.characters = data;
+    });
   }
 
   async getCharacterData() {
@@ -51,24 +55,46 @@ export class EndpointManager {
   }
 
   async getMap(character) {
-    const x = character?.x ?? 0;
-    const y = character?.y ?? 0;
-
-    const url = `${this.server}/maps/${x}/${y}`;
-
     const options = {
       method: "GET",
       headers: this.requestHeader,
     };
 
-    const response = await fetch(url, options);
+    if (typeof character === "object") {
+      const x = character?.x ?? 0;
+      const y = character?.y ?? 0;
 
-    if (response.status !== 200) {
-      console.log(`Something went wrong: ${response.status}`);
-      return null;
+      const url = `${this.server}/maps/${x}/${y}`;
+
+      const response = await fetch(url, options);
+
+      if (response.status !== 200) {
+        console.log(`Something went wrong: ${response.status}`);
+      } else {
+        let { data } = await response.json();
+        console.log(data);
+        return data;
+      }
+    } else if (character === "all") {
+      let mapDatas = [];
+
+      for (let char of this.characters) {
+        let data = await this.getMap(char);
+
+        mapDatas.push(data);
+      }
+
+      return mapDatas;
     } else {
-      let { data } = await response.json();
-      return data;
+      for (let char of this.characters) {
+        if (char.name === character) {
+          let data = await this.getMap(char);
+          console.log("test");
+          return data;
+        }
+      }
+      
+      console.log("Invalid input.  Try again.");
     }
   }
 
@@ -284,7 +310,9 @@ export class EndpointManager {
               console.log("Character inventory is full.");
               break;
             case 486:
-              console.log("An action is already in progress by your character.");
+              console.log(
+                "An action is already in progress by your character."
+              );
               break;
             default:
               console.log("Error Unknown: " + response.status);

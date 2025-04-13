@@ -72,7 +72,18 @@ export class EndpointManager {
         console.log(`Something went wrong: ${response.status}`);
       } else {
         let { data } = await response.json();
-        console.log(data);
+
+        console.log(`
+          Map Data: ${character?.name}
+              Name: ${data?.name}
+              Skin: ${data?.skin}
+                 X: ${data?.x}
+                 Y: ${data?.y}
+           Content:
+              Type: ${data?.content?.type}
+              Code: ${data?.content?.code}
+        `);
+
         return data;
       }
     } else if (character === "all") {
@@ -80,21 +91,19 @@ export class EndpointManager {
 
       for (let char of this.characters) {
         let data = await this.getMap(char);
-
         mapDatas.push(data);
       }
 
       return mapDatas;
     } else {
       for (let char of this.characters) {
-        if (char.name === character) {
+        if (char?.name === character) {
           let data = await this.getMap(char);
-          console.log("test");
           return data;
+        } else {
+          console.log("Invalid input.  Try again.");
         }
       }
-      
-      console.log("Invalid input.  Try again.");
     }
   }
 
@@ -208,7 +217,9 @@ export class EndpointManager {
         return null;
       } else {
         let { data } = await response.json();
-        console.log("The character has rested successfully.");
+        console.log(
+          `Name: ${data.character.name} rested.\tHP Restored: ${data.hp_restored}, HP Current: ${data.character.hp}`
+        );
 
         return data;
       }
@@ -238,8 +249,9 @@ export class EndpointManager {
           }
         } else {
           let { data } = await response.json();
-          console.log("The character has rested successfully.");
-
+          console.log(
+            `Name: ${data.character.name} rested.\tHP Restored: ${data.hp_restored}, HP Current: ${data.character.hp}`
+          );
           restDatas.push(data);
         }
       }
@@ -283,7 +295,9 @@ export class EndpointManager {
         return null;
       } else {
         let { data } = await response.json();
-        console.log("The fight ended successfully.");
+        console.log(
+          `Name: ${data.character.name}, Result: ${data.fight.result}, XP: ${data.fight.xp}, Gold: ${data.fight.gold}`
+        );
 
         return data;
       }
@@ -320,16 +334,17 @@ export class EndpointManager {
           }
         } else {
           let { data } = await response.json();
-          console.log("The fight ended successfully.");
 
           fightDatas.push(data);
+          console.log(
+            `Name: ${data.character.name},\tResult: ${data.fight.result},\tXP: ${data.fight.xp},\tGold: ${data.fight.gold}`
+          );
         }
       }
 
       return fightDatas;
     }
   }
-
   async gatherResource(character) {
     let url = `${this.server}/my/${character}/action/gathering`;
 

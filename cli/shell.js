@@ -3,7 +3,7 @@ import { ask, locations } from "../shared/utils.js";
 
 export class Shell {
   constructor() {
-    console.log("***** Artifacts CLI *****\n")
+    console.log("***** Artifacts CLI *****\n");
 
     this.manager = new EndpointManager();
     this.characters = null;
@@ -43,11 +43,46 @@ export class Shell {
           case "locations":
             this.getLocationsMenu(cmdArgs[1]);
             break;
+          case "auto":
+            await this.processAuto(cmdArgs[1]);
+            break;
           default:
+            console.log("Unknown command. Type 'help' for available commands.");
         }
 
-        input = ask("Execute Command: ");
-        cmdArgs = input.split(" ");
+        if (cmdArgs[0] !== "auto") {
+          input = ask("Execute Command: ");
+          cmdArgs = input.split(" ");
+        }
+      }
+    }
+  }
+
+  async processAuto(type) {
+    if (type === "gather") {
+      console.log(
+        "Starting auto gather mode. You must stop the program using CTRL + C to stop."
+      );
+      while (true) {
+        try {
+          let res = await this.manager.gatherResource("all");
+          if (res && Array.isArray(res)) {
+            const maxCooldown = Math.max(
+              ...res.map((r) => r.cooldown?.total_seconds || 0)
+            );
+            if (maxCooldown > 0) {
+              console.log(
+                `Waiting ${maxCooldown} seconds before next gather...`
+              );
+              await new Promise((resolve) =>
+                setTimeout(resolve, maxCooldown * 1000)
+              );
+            }
+          }
+        } catch (error) {
+          console.log("Error in auto gather:", error);
+          break;
+        }
       }
     }
   }
@@ -56,30 +91,37 @@ export class Shell {
     console.log("");
     console.log("Help Menu:");
     console.log("\tHelp: help, display this help menu");
-    console.log("\tMove: move <character,all> <x> <y>, move character to x y location.");
-    console.log("\tFight: fight <character>, fight with character at their current location");
-    console.log("\tGather: gather <character,all>, gather with character(s) at their current location");
+    console.log(
+      "\tMove: move <character,all> <x> <y>, move character to x y location."
+    );
+    console.log(
+      "\tFight: fight <character>, fight with character at their current location"
+    );
+    console.log(
+      "\tGather: gather <character,all>, gather with character(s) at their current location"
+    );
     console.log("\tRest: rest <character>, rest character");
     console.log("\tMap: map <character, all> get map data for character");
     console.log("\tLocations: locations, displays a list of locations");
+    console.log("\tAuto: auto <task>");
     console.log("");
   }
 
-  getLocationsMenu( type ) {
+  getLocationsMenu(type) {
     let craft = locations.crafting;
     let fight = locations.fighting;
     let gather = locations.gathering;
-    
-    if (type === 'crafting') {
+
+    if (type === "crafting") {
       console.log("Crafting Locations: ");
       for (let index = 0; index < craft.length; index++) {
         let loc = craft[index];
         console.log(
           `    Name: ${loc.name}\n` +
-          `     Pos: X = ${loc.pos.x} Y = ${loc.pos.y}\n\r`
+            `     Pos: X = ${loc.pos.x} Y = ${loc.pos.y}\n\r`
         );
       }
-    } else if (type === 'gathering') {
+    } else if (type === "gathering") {
       console.log("Gathering Locations: ");
       for (let index = 0; index < gather.length; index++) {
         let loc = gather[index];
@@ -88,14 +130,14 @@ export class Shell {
             `     Pos: X = ${loc.pos.x} Y = ${loc.pos.y}\n\r`
         );
       }
-    } else if (type === 'fighting') {
+    } else if (type === "fighting") {
       console.log("Crafting Locations: ");
       for (let index = 0; index < fight.length; index++) {
         let loc = fight[index];
         console.log(
           `    Name: ${loc.name}\n` +
-          `   Level: ${loc.level}\n` +
-          `     Pos: X = ${loc.pos.x} Y = ${loc.pos.y}\n\r`
+            `   Level: ${loc.level}\n` +
+            `     Pos: X = ${loc.pos.x} Y = ${loc.pos.y}\n\r`
         );
       }
     } else {

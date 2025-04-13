@@ -46,7 +46,7 @@
       <div class="item-slot">
         <equipment-slot-panel
           slot="Boots"
-          :value="character.rune_slot"
+          :value="character.boots_slot"
         ></equipment-slot-panel>
       </div>
       <div class="item-slot">

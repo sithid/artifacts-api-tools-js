@@ -10,7 +10,6 @@ import { RouterLink, RouterView } from 'vue-router'
         <h1>ArtifactsUI</h1>
         <nav class="nav-menu">
           <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/">Play</RouterLink>
           <RouterLink to="/characters">Characters</RouterLink>
           <RouterLink to="/inventory">Inventory</RouterLink>
           <RouterLink to="/trade">Trade</RouterLink>
@@ -45,7 +44,7 @@ header {
 h1 {
   display: inline-block;
   border: 2px solid var(--color-text-primary);
-  background-color: var( --color-bg-tertiary);
+  background-color: var( --color-bg-components);
   border-radius: 5px;
   min-width: 200px;
   max-width: 300px;
@@ -65,7 +64,7 @@ h1 {
   text-decoration: none;
   border: 2px solid var(--color-text-primary);
   border-radius: 15px;
-  background-color: var(--color-bg-tertiary);
+  background-color: var(--color-bg-components);
   padding: 2px;
 }
 </style>

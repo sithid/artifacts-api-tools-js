@@ -1,6 +1,6 @@
 <template>
   <div class="details">
-    <h3>{{ formattedMapCode }} {{ formattedMapType }}</h3>
+    <h3>{{ formattedMapCode }}</h3>
     <img id="mapImage" :src="formattedMapSrc" />
     <h3>{{ formattedMapCords }}</h3>
   </div>
@@ -13,12 +13,31 @@ export default {
       type: Object,
       default() {
         return {
+          required: true,
           name: "Empty",
           skin: "men1",
           x: 0,
           y: 0,
-        };
-      },
+          level: 1,
+          max_level: 100,
+          hp: 100,
+          max_hp: 100,
+          dmg: 0,
+          critical_strike: 0,
+          attack_fire: 0,
+          attack_water: 0,
+          attack_earth: 0,
+          attack_air: 0,
+          dmg_fire: 0,
+          dmg_water: 0,
+          dmg_earth: 0,
+          dmg_air: 0,
+          res_fire: 0,
+          res_water: 0,
+          res_earth: 0,
+          res_air: 0
+        }
+      }
     },
     map: {
       type: Object,
@@ -31,10 +50,10 @@ export default {
           content: {
             code: "empty",
             type: "empty",
-          },
-        };
-      },
-    },
+          }
+        }
+      }
+    }
   },
   computed: {
     formattedMapSrc() {
@@ -64,16 +83,16 @@ export default {
       }
 
       return `( ${this.map.x} , ${this.map.y} )`;
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
 .details {
   border: 2px solid var(--color-text-primary);
   border-radius: 15px;
-  background-color: var(--color-bg-tertiary);
+  background-color: var(--color-bg-components);
   color: var(--color-text-primary);
   text-align: center;
   margin-left: 10px;

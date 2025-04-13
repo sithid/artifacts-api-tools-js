@@ -1,10 +1,15 @@
 :root {
+  /* standard ui colors */
   --color-bg-primary: rgb(250, 15, 55);
   --color-bg-secondary: rgb(14, 77, 212);
-  --color-bg-tertiary: rgb(240, 147, 7);
+  --color-bg-components: rgb(240, 147, 7);
   --color-text-primary: rgb(0,0,0);
   --color-text-secondary: rgb(255,255,255);
-  --color-text-tertiary: var(--color-bg-tertiary);
+  --color-text-tertiary: var(--color-bg-dark);
+
+  /* limited use-case */
+  --color-bg-dark: #333333;
+  --color-bg-pastelblue: #a7c7e7;
 }
 * {
   margin: 0;

@@ -1,4 +1,4 @@
-import { EndpointManager } from "./../shared/EndpointManager.js";
+import { EndpointManager } from "./../shared/endpoints/EndpointManager.js";
 import { ask, locations } from "../shared/utils.js";
 
 export class Shell {
@@ -53,9 +53,9 @@ export class Shell {
     console.log("");
     console.log("Help Menu:");
     console.log("\tHelp: help, display this help menu");
-    console.log("\tMove: move <character> <x> <y>, move character to x y location.");
+    console.log("\tMove: move <character,all> <x> <y>, move character to x y location.");
     console.log("\tFight: fight <character>, fight with character at their current location");
-    console.log("\tGather: gather <character>, gather all, gather with character(s) at their current location");
+    console.log("\tGather: gather <character,all>, gather with character(s) at their current location");
     console.log("\tRest: rest <character>, rest character");
     console.log("\tLocations: locations, displays a list of locations")
     console.log("");

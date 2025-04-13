@@ -1,8 +1,14 @@
 <template>
   <div class="stat-container">
     <div class="damage-panel">
+      <img alt="dmg icon" src="https://www.artifactsmmo.com/images/effects/wisdom.png"/>
+      <span class="value">{{ character.dmg }}%</span><span class="label">Wisdom</span>
       <img alt="dmg icon" src="https://www.artifactsmmo.com/images/effects/dmg.png"/>
       <span class="value">{{ character.dmg }}%</span><span class="label">Damage</span>
+    </div>
+    <div class="damage-panel">
+      <img alt="crit icon" src="https://www.artifactsmmo.com/images/effects/haste.png"/>
+      <span class="value">{{ character.critical_strike }}%</span><span class="label">Haste</span>
       <img alt="crit icon" src="https://www.artifactsmmo.com/images/effects/critical_strike.png"/>
       <span class="value">{{ character.critical_strike }}%</span><span class="label">Critical Strike</span>
     </div>
@@ -72,7 +78,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .stat-container {
   display: flex;
   flex-direction: column;
@@ -95,11 +101,11 @@ export default {
 .value {
   align-content: center;
   color: var( --color-bg-primary );
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 .stat-container img {
-  max-width: 32px;
-  max-height: 32px;
+  max-width: 28px;
+  max-height: 28px;
 }
 </style>

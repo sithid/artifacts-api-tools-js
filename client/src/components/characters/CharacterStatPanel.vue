@@ -35,6 +35,7 @@ export default {
       type: Object,
       default() {
         return {
+          required: true,
           name: "Empty",
           skin: "men1",
           x: 0,
@@ -42,7 +43,21 @@ export default {
           level: 1,
           max_level: 100,
           hp: 100,
-          max_hp: 100
+          max_hp: 100,
+          dmg: 0,
+          critical_strike: 0,
+          attack_fire: 0,
+          attack_water: 0,
+          attack_earth: 0,
+          attack_air: 0,
+          dmg_fire: 0,
+          dmg_water: 0,
+          dmg_earth: 0,
+          dmg_air: 0,
+          res_fire: 0,
+          res_water: 0,
+          res_earth: 0,
+          res_air: 0
         };
       }
     }
@@ -54,13 +69,13 @@ export default {
 .character-stats-container {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-tertiary);
+  background-color: var(--color-bg-components);
   border: 2px solid var(--color-text-primary);
   border-radius: 15px;
   width: 300px;
   height: 280px;
   margin-left: 10px;
-  padding: 6px;
+  padding: 5px;
 }
 
 .character-name {
@@ -69,6 +84,6 @@ export default {
 }
 
 .dmg-res-container {
-
+  
 }
 </style>

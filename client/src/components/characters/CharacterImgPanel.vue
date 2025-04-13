@@ -40,7 +40,7 @@ export default {
 .character {
   text-align: center;
   font-size: 1rem;
-  background-color: var( --color-bg-tertiary);
+  background-color: var( --color-bg-components);
   color: var(--color-text-primary);
   padding: 10px;
   min-width: 200px;

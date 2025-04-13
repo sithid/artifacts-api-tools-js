@@ -29,12 +29,20 @@
               :character="characters[activeCharacter]"
             ></character-stat-panel>
           </div>
-        <div class="skills-panel">
-          <character-skill-panel
+          <div class="skills-panel">
+            <character-skill-panel
+              v-if="characters[activeCharacter]"
+              :character="characters[activeCharacter]"
+          ></character-skill-panel>
+          </div>
+        </div>
+          <div class="bottom-panels">
+          <div class="gear-panel">
+            <character-equipment-panel
             v-if="characters[activeCharacter]"
             :character="characters[activeCharacter]"
-          ></character-skill-panel>
-        </div>
+            ></character-equipment-panel>
+          </div>
         </div>
       </div>
     </div>
@@ -42,18 +50,20 @@
 </template>
 
 <script>
-import { EndpointManager } from '../../../shared/EndpointManager.js';
+import { EndpointManager } from '../../../shared/endpoints/EndpointManager.js';
 import CharacterImgPanel from '@/components/characters/CharacterImgPanel.vue';
 import CharacterMapPanel from '@/components/characters/CharacterMapPanel.vue';
 import CharacterStatPanel from '@/components/characters/CharacterStatPanel.vue';
 import CharacterSkillPanel from '@/components/characters/CharacterSkillPanel.vue';
+import CharacterEquipmentPanel from '@/components/characters/CharacterEquipmentPanel.vue';
 
 export default {
   components: {
     CharacterImgPanel,
     CharacterMapPanel,
     CharacterSkillPanel,
-    CharacterStatPanel
+    CharacterStatPanel,
+    CharacterEquipmentPanel
   },
   created() {
     this.getCharacters();
@@ -138,8 +148,16 @@ export default {
   gap: 10px;
 }
 
+.bottom-panels {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 ul {
   border: 2px solid var(--color-text-primary);
+  background-color: var(--color-bg-components);
+  align-content: center;
   margin: 0;
 }
 
@@ -157,4 +175,5 @@ p {
   text-align: center;
   color: var(--color-text-primary);
 }
+
 </style>

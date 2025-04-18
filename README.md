@@ -15,6 +15,8 @@ Various tools, utilities, & frontends, etc for the ArtifactsMMO API.
 - GUI: VueJS frontend client to play the game.
 
 ## Vue Frontend Progress
+
+Character page is what I am currently working on.
 ![ArtifactUI](./images/progress.png)
 
 ## Running

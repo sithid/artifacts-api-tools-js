@@ -1,5 +1,4 @@
 import { createRequire } from "module";
-import { API_CHARS } from "../secrets.js";
 const require = createRequire(import.meta.url);
 const prompt = require("prompt-sync")();
 

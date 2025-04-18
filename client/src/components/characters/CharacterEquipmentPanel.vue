@@ -70,7 +70,7 @@
       <div class="item-slot">
         <equipment-slot-panel
           slot="Ring(2)"
-          :value="character.shield_slot"
+          :value="character.ring2_slot"
         ></equipment-slot-panel>
       </div>
       <div class="item-slot">

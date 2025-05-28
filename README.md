@@ -1,4 +1,3 @@
-
 # artifacts-api-tools
 
 Various tools, utilities, & frontends, etc for the ArtifactsMMO API.
@@ -22,12 +21,30 @@ Character page is what I am currently working on.
 ## Running
 
 Clone the repo and execute `npm install` inside `./client`,`./cli`, and `./shared`.  
-Execute `npm run dev` inside `./client` or `node main.js` inside `./cli`.  
+Execute `npm run dev` inside `./client` or `node main.js` inside `./cli`.
 
-You will notice that `secrets.js` is missing.  You will need to create your own ( touch secrets.js ) and add your own api key:
+You will notice that `secrets.js` is missing from the root directory of the repo. You will need to create your own ( touch secrets.js ) and add your own api key and characters:
 
-```javascript
+```
+// artifact-api-tools-js/secrets.js
 export const API_TOKEN = "ARTIFACTS_API_TOKEN_GOES_HERE"
+export const API_CHARS = [
+  {
+    name: 'char1'
+  },
+  {
+    name: 'char2'
+  },
+  {
+    name: 'char3'
+  },
+  {
+    name: 'char4'
+  },
+  {
+    name: 'char5'
+  }
+];
 ```
 
 I strongly suggest that you add your own `secrets.js` to `.gitignore` if you plan to commit to github.  

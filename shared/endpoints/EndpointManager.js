@@ -5,10 +5,12 @@ export class EndpointManager {
     this.characters = [];
     this.server = "https://api.artifactsmmo.com";
     this.token = API_TOKEN;
+
     this.requestHeader = new Headers();
     this.requestHeader.append("Accept", "application/json");
     this.requestHeader.append("Content-Type", "application/json");
     this.requestHeader.append("Authorization", "Bearer " + this.token);
+    
     this.getCharacterData().then((data) => {
       this.characters = data;
     });
